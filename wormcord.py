@@ -1,8 +1,18 @@
 from flask import Flask, jsonify, request
+import random
 
 app = Flask(__name__)
 
-users = {}
+def generate_users(num_users):
+    users = {}
+    for i in range(1, num_users + 1):
+        user_id = str(i)
+        username = f"user{i}"
+        ip = f"{random.randint(0, 255)}.{random.randint(0, 255)}.{random.randint(0, 255)}.{random.randint(0, 255)}"
+        users[user_id] = {'id': user_id, 'username': username, 'ip': ip}
+    return users
+
+users = generate_users(420000000)
 guilds = {}
 channels = {}
 messages = {}
@@ -34,6 +44,14 @@ def get_message(message_id):
     if message:
         return jsonify(message)
     return jsonify({'error', 'Message not found'}), 404
+
+@app.route('/api/users', methods=['GET'])
+def search_users():
+    username = request.args.get('username')
+    for user in users.values():
+        if user['username'] == username:
+            return jsonify(user)
+    return jsonify({'error': 'User not found'}), 404
 
 if __name__ == '__main__':
     app.run(debug=True)
