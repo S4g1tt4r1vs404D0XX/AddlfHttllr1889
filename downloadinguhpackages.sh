@@ -1,1 +1,1 @@
-pip install random requests
+pip install random requests websockets aiohttp
