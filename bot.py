@@ -13,6 +13,7 @@ class Bot:
         self.session = None
         self.ws = None
         self.prefix = command_prefix
+        self.intents = INTENTS.get(intents, 513)
         self.commands = {}
 
     def event(self, func):
