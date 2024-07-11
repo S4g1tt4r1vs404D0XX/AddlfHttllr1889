@@ -1,4 +1,3 @@
-# event_emitter.py
 import asyncio
 
 class events:
