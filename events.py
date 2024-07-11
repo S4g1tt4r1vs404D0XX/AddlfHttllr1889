@@ -1,7 +1,7 @@
 # event_emitter.py
 import asyncio
 
-class EventEmitter:
+class events:
     def __init__(self):
         self._events = {}
 
