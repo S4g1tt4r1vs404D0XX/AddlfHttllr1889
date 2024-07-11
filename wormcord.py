@@ -8,8 +8,9 @@ def generate_users(num_users):
     for i in range(1, num_users + 1):
         user_id = str(i)
         username = f"user{i}"
+        avatar = f"https://robohash.org/{username}.png"
         ip = f"{random.randint(0, 255)}.{random.randint(0, 255)}.{random.randint(0, 255)}.{random.randint(0, 255)}"
-        users[user_id] = {'id': user_id, 'username': username, 'ip': ip}
+        users[user_id] = {'id': user_id, 'username': username, 'avatar': avatar, 'ip': ip}
     return users
 
 users = generate_users(420000000)
