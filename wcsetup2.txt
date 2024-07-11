@@ -1,0 +1,4 @@
+wormcord/
+├── __init__.py
+├── bot.py
+├── event_emitter.py
